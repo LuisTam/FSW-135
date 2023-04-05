@@ -1,35 +1,34 @@
-const express= require('express')
+const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const Items = require('./models/items')
+const Inventory = require('./models/inventory')
+ 
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-mongoose.connect('mongodb://localhost:27017/items',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  },
-  () => console.log("Connected to the DB")
+mongoose.connect('mongodb://localhost:27017').then(
+    console.log('MongoDB is connected')
 )
-const items = new Items({
+
+const inventory = new Inventory({
     title: "Soccer Ball",
-    description: "Team Ball"
+    description:"Team ball",
+    value: 25.00,
+
 })
 
-
-app.get('/', (req, res) =>{
-    res.send(items)
+app.get('/', (req, res) => {
+    res.send(inventory)
 })
 
 app.use((err, req, res, next) => {
+    console.log(err)
     return res.send({errMsg: err.message})
 })
 
 app.listen(9000, () => {
-    console.log("Sever is running")
+    console.log("The server is ready")
 })
+
