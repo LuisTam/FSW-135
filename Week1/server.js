@@ -2,26 +2,15 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const Inventory = require('./models/inventory')
- 
 
 app.use(express.json())
 app.use(morgan('dev'))
 
+//Connect to DB
 mongoose.connect('mongodb://localhost:27017').then(
-    console.log('MongoDB is connected')
-)
+    console.log('MongoDB connected with the Server'))
 
-const inventory = new Inventory({
-    title: "Soccer Ball",
-    description:"Team ball",
-    value: 25.00,
-
-})
-
-app.get('/', (req, res) => {
-    res.send(inventory)
-})
+app.use('/inventory', require('./routes/inventoryRouter.js'))
 
 app.use((err, req, res, next) => {
     console.log(err)
@@ -31,4 +20,3 @@ app.use((err, req, res, next) => {
 app.listen(9000, () => {
     console.log("The server is ready")
 })
-
