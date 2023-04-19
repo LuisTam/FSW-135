@@ -9,7 +9,7 @@ app.use(morgan('dev'))
 mongoose.connect('mongodb://localhost:27017').then(
     console.log('MongoDB connected with the Server'))
 
-app.use('/users', require('./routes/userRouter,js'))
+app.use('/users', require('./routes/userRouter'))
 app.use('/comments', require('./routes/commentsRouter'))
 app.use('/issues', require('./routes/issuesRouter'))
 

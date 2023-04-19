@@ -12,6 +12,17 @@ commentsRouter.get("/", (req, res, next) => {
          return res.status(200).send(comments)
      })
 })
+commentsRouter.get("/:commentId", (req, res, next) => {
+    Comments.findOne({_id: req.params.commentId},
+        (err, pickedComment) =>{
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(pickedComment)
+        }
+        )
+})
 
 commentsRouter.post("/", (req, res, next) => {
     const newComment = new Comments(req.body)

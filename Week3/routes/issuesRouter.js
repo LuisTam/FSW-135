@@ -12,6 +12,17 @@ issuesRouter.get("/", (req, res, next) => {
          return res.status(200).send(issue)
      })
 })
+issuesRouter.get("/:issueId", (req, res, next) => {
+    Issue.findOne({_id: req.params.issueId},
+        (err, pickedIssue) =>{
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(pickedIssue)
+        }
+        )
+})
 
 issuesRouter.post("/", (req, res, next) => {
     const newIssue = new Issue(req.body)

@@ -1,4 +1,5 @@
 const express = require('express')
+const users = require('../models/users.js')
 const userRouter = express.Router()
 const User = require('../models/users.js')
 
@@ -10,6 +11,18 @@ userRouter.get("/", (req, res, next) => {
         }
         return res.status(200).send(users)
     })
+})
+
+userRouter.get("/:userId", (req, res, next) => {
+    User.findOne({_id: req.params.userId},
+        (err, pickedUser) =>{
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(pickedUser)
+        }
+        )
 })
 
 userRouter.post("/", (req, res, next) => {
