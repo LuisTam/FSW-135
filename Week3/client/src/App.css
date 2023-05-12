@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    outline: none;
+    text-decoration: none;
+  }
+  
+  .app {
+    background-color: lightgreen;
+  }
+  
+  .header {
+    background-color: red;
+    font-size: 3rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+    background-color: lightblue
+  }
+  
+  .auth-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+  }
+  
+  .auth-container > h1 {
+    font-size:large;
+    margin: 24px;
+  }
+  
+  .auth-container > p {
+    margin: 16px;
+  }
+  
+  .auth-container > form {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: black;
+    padding: 20px;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .auth-container > form > input {
+    margin: 16px 8px;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  .auth-container > form > button {
+    margin: 16px 8px;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  .errMsg {
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+  }
+  
+  .issue-list {
+    align-content: center
+  }
+  
+  .issue {
+    align-content: center
+  }
+  .h1Title{
+    text-align: center;
+    color: blue;
+  }
+  .desc{
+    text-align: center;
+    font-weight: 100;
+  }
+  
+  .public {
+    height: 100vh;
+  }
+  
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .profile > h1 {
+    margin: 8px;
+    font-size: 2em;
+    text-align: center;
+  }
+  
+  .profile > h3 {
+    margin: 16px 0;
+    text-decoration: underline;
+  }
+  
+  .profile > form {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    border: 1px solid white;
+    background-color: black;
+    padding: 16px;
+    border-radius: 5px
+  }
+  
+  .profile > form > input,
+  .profile > form > button {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 5px
+  }

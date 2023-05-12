@@ -1,20 +1,20 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const newIssueSchema = new Schema({
-    title:{
-        type:String,
-        require:true,
+const issueSchema = new Schema ({
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        require: true
     },
-    person:{
-        type:String,
-        require:true
+    title:{
+        type: String,
+        required: true
     },
     description:{
-        type:String,
-        require:true
-    }
-
+        type: String,
+        required: true
+    },
 })
 
-module.exports = mongoose.model('Issue', newIssueSchema)
+module.exports = mongoose.model('Issues', issueSchema)

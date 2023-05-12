@@ -1,14 +1,14 @@
-import React, {useState, useContext} from "react";
-import AuthForm from './AuthForm'
-import { UserContext } from '../context/UserProvider'
+import React, { useState, useContext } from 'react'
+import AuthForm from './AuthForm.js'
+import { UserContext } from '../context/UserProvider.js'
 
-const initInputs = { username: "", password: ""}
+const initInputs = { username: '', password: '' }
 
 export default function Auth(){
     const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
 
-    const { signup, login } = useContext(UserContext)
+    const { signup, login, errMsg, resetAuthErr } = useContext(UserContext)
 
     function handleChange(e){
         const {name, value} = e.target
@@ -28,56 +28,37 @@ export default function Auth(){
         login(inputs)
     }
 
-    return(
+    function toggleForm() {
+        setToggle(prev => !prev)
+        resetAuthErr()
+    }
+
+    return (
         <div className="auth-container">
-            <h1>Climate Action</h1>
+            <h3>Climate Issues App</h3>
             { !toggle ?
             <>
-            <AuthForm
-            handleChange={handleChange}
-            handleSumbit={handleSignup}
-            inputs={inputs}
-            btnText= "Join The Cause"
-            />
-            <p onClick={() => setToggle(prev => !prev)}>Already Helping The Cause?</p>
+                <AuthForm 
+                    handleChange={handleChange}
+                    handleSubmit={handleSignup}
+                    inputs={inputs}
+                    btnText="Sign up"
+                    errMsg={errMsg}
+                />
+                <p onClick={toggleForm}>Already a member?</p>
             </>
-            :
-            <>
-            <AuthForm
-            handleChange={handleChange}
-            handleSumbit={handleLogin}
-            inputs={inputs}
-            btnText="Login"
-            />
-            <p onClick={() => setToggle(prev => !prev)}>Start Helping</p>
-            </>
+          :
+                <>
+                <AuthForm 
+                    handleChange={handleChange}
+                    handleSubmit={handleLogin}
+                    inputs={inputs}
+                    btnText="Login"
+                    errMsg={errMsg}
+                />
+                <p onClick={toggleForm}>Not a member?</p>
+                </>
             }
         </div>
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

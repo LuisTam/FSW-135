@@ -1,30 +1,35 @@
-import React from "react";
+import React from 'react'
 
 export default function AuthForm(props){
-    const {
+    const{
         handleChange,
         handleSubmit,
         btnText,
-        inputs:{
-            username,
+        errMsg,
+        inputs: {
+            username, 
             password
         }
     } = props
-    return(
-        <form onSubmit={handleSubmit}>
+
+    return (
+        <form className="login-signup" onSubmit={handleSubmit}>
             <input
-            type="text"
-            value={username}
-            name="username"
-            onChange={handleChange}
-            placeholder="Username"/>
+               type='text'
+               value={username}
+               name={"username"}
+               onChange={handleChange}
+               placeholder='Username'
+            /><br />
             <input
-            typeof="text"
-            value={password}
-            name="password"
-            onChange={handleChange}
-            placeholder="Password"/>
-            <button>{btnText}</button>
+               type= 'text'
+               value={password}
+               name={"password"}
+               onChange={handleChange} 
+               placeholder="Password"
+            /> <br />
+            <button>{ btnText }</button>
+            <p style={{color: "red", textAlign: "center"}}>{ errMsg }</p>   
         </form>
     )
 }
